@@ -5,7 +5,7 @@ const links = ref([])
 
 const fetchlinks = async () => {
   // Corrected spelling of "async"
-  await axios.get('https://qrtas.almona.host/api/link').then((res) => {
+  await axios.get('https://qrtas-dash.almona.host/api/link').then((res) => {
     links.value = res.data.data
   })
 }
@@ -41,7 +41,7 @@ onMounted(fetchlinks)
                         class="btnn btn-outline-light btn-social"
                         target="_blank"
                         aria-label="facebook"
-                        href="#"
+                        :href="links.facebook"
                         ><FontAwesome :icon="['fab', 'facebook']"
                       /></a>
                       <a
@@ -49,7 +49,7 @@ onMounted(fetchlinks)
                         class="btnn btn-outline-light btn-social"
                         target="_blank"
                         aria-label="Twitter"
-                        href="#"
+                        :href="links.twitter"
                         ><FontAwesome :icon="['fab', 'twitter']"
                       /></a>
                       <a
@@ -57,7 +57,7 @@ onMounted(fetchlinks)
                         class="btnn btn-outline-light btn-social"
                         target="_blank"
                         aria-label="snapchat"
-                        href="https://www.instagram.com/growth.tech13"
+                        :href="links.snapchat"
                         ><FontAwesome :icon="['fab', 'snapchat']"
                       /></a>
                       <a
@@ -65,7 +65,7 @@ onMounted(fetchlinks)
                         class="btnn btn-outline-light btn-social"
                         target="_blank"
                         aria-label="instagram"
-                        href="https://www.instagram.com/growth.tech13"
+                        :href="links.instagram"
                         ><FontAwesome :icon="['fab', 'instagram']"
                       /></a>
                       <a
@@ -73,7 +73,7 @@ onMounted(fetchlinks)
                         class="btnn btn-outline-light btn-social"
                         target="_blank"
                         aria-label="linkedin"
-                        href="https://www.linkedin.com/company/growthtech-co"
+                        :href="links.linkedin"
                         ><FontAwesome :icon="['fab', 'linkedin']"
                       /></a>
                       <a
@@ -81,7 +81,7 @@ onMounted(fetchlinks)
                         class="btnn btn-outline-light btn-social"
                         target="_blank"
                         aria-label="linkedin"
-                        href="#"
+                        :href="links.tiktok"
                         ><FontAwesome :icon="['fab', 'tiktok']"
                       /></a>
                     </div>
@@ -169,8 +169,8 @@ onMounted(fetchlinks)
                               v-if="links.whatsapp"
                               class="btnn btn-outline-light btn-social my-2"
                               target="_blank"
-                              aria-label="linkedin"
-                              href="#"
+                              aria-label="whatsapp"
+                              :href="links.whatsapp"
                               style="background-color: #5BA1AB
 "
                               ><FontAwesome :icon="['fab', 'whatsapp']"

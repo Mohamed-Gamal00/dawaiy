@@ -11,12 +11,13 @@
 
 // app.mount('#app')
 import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+// import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'normalize.css'
+import store from "./store";
 // import './assets/main.css'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -28,7 +29,8 @@ import 'sweetalert2/dist/sweetalert2.min.css'
 import VueSnip from 'vue-snip'
 library.add(fas, far, fab)
 const app = createApp(App)
-app.use(createPinia())
+.use(store)
+// app.use(createPinia())
 app.use(VueSweetalert2)
 app.use(VueSnip)
 app.use(router)

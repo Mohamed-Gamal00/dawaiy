@@ -3,7 +3,7 @@
     <div class="loading-container">
       <div class="loading"></div>
       <div id="loading-text">loading</div>
-      <div id="loading-sigma">dawaey</div>
+      <div id="loading-sigma">dawaeiy</div>
     </div>
     <br />
   </div>

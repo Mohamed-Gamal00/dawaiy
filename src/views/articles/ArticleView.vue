@@ -12,7 +12,7 @@ const id = route.params.id
 const article = ref([])
 const fetchArticle = async () => {
   loading.value = true
-  await axios.get(`https://qrtas.almona.host/api/article/${id}`).then((res) => {
+  await axios.get(`https://qrtas-dash.almona.host/api/article/${id}`).then((res) => {
     article.value = res.data.article
     loading.value = false
   })

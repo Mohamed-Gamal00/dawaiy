@@ -14,29 +14,15 @@ const loading = ref('false')
 const articles = ref([])
 const fetchArticles = async () => {
   await axios
-    .get('https://qrtas.almona.host/api/articles')
+    .get('https://qrtas-dash.almona.host/api/articles')
     .then((res) => {
       loading.value = true
       articles.value = res.data.articles
       loading.value = false
     })
     .catch((err) => {
-      // router.beforeEach((to, from, next) => {
-      //   if (err.message == 'Network Error') {
-      //     next({ name: to.name }) // Redirect to the 'articles' page
-      //   } else {
-      //     next() // Continue with the navigation
-      //   }
-      // })
-      // Check if it's a server error
-      if (err.message == 'Network Error') {
-        console.log('true,there is error of net work')
-        router.push({ name: 'servererror' })
-        // Navigate to the server error page
-      } else {
-        console.log('false,there is No error of net work')
-        router.push({ name: 'articles' })
-      }
+      console.log(err)
+      router.push({ name: 'servererror' })
     })
 }
 
@@ -47,7 +33,9 @@ onMounted(fetchArticles)
   <NavBarCom />
   <!-- المدونة 2 -->
   <div class="container-fluid">
-    <div class="row text-dark d-flex justify-content-center text-center my-lg-3 py-lg-3 banner-header">
+    <div
+      class="row text-dark d-flex justify-content-center text-center my-lg-3 py-lg-3 banner-header"
+    >
       <strong>
         <h2 class="fw-900" style="font-size: 30px">المدونة</h2>
         <p>تعرف علي اخر اخبار تطبيق دوائي</p>

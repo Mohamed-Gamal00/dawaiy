@@ -1,12 +1,12 @@
 <template>
   <div>
     <!-- خدماتنا 2 -->
-    <div class="container-fluid py-3">
+    <div class="container-fluid py-3" dir="rtl">
       <div class="row d-flex justify-content-center">
         <div class="col-md-11">
           <div class="row align-items-center justify-content-around mb-2">
             <div class="col-lg-6 fw-bold align-middle text-center text-lg-end">
-              <h1 class="mb-4 fw-bold" style="font-weight: 900 !important">
+              <h1 class="mb-4 fw-bold " style="font-weight: 900 !important">
                 نتيح لك إمكانية البحث عن الأدوية والمستلزمات الطبية المختلفة
               </h1>
               <p class="fs-14">
@@ -15,7 +15,7 @@
                 المنافسه
               </p>
               <p class="fs-14">الآن احصل علي افضل الادوية من خلال تطبيق دوائي .</p>
-              <button class="btn m-0 p-0">
+              <button class="btn m-lg-0 m-md-0 p-0 mb-3">
                 <router-link
                   :to="{ name: 'contact' }"
                   class="btn fw-bold text-white rounded-3 mb-2 text-black ps-lg-4 pe-lg-4 px-5"

@@ -4,6 +4,9 @@ import axios from 'axios'
 import { ref, onMounted } from 'vue'
 import { watch } from 'vue'
 import { useRoute } from 'vue-router'
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
 // import router from '../../router'
 // const handelSignOut = () => {
 //   signOut(auth).then(()=>{
@@ -13,9 +16,15 @@ import { useRoute } from 'vue-router'
 // const isLoggedIn = ref('false')
 const links = ref([])
 const fetchlinks = async () => {
-  await axios.get('https://qrtas.almona.host/api/link').then((res) => {
-    links.value = res.data.data
-  })
+  await axios
+    .get('https://qrtas-dash.almona.host/api/link')
+    .then((res) => {
+      links.value = res.data.data
+    })
+    .catch((err) => {
+      console.log(err)
+      router.push({ name: 'servererror' })
+    })
 }
 // let auth
 onMounted(async () => {
@@ -106,7 +115,7 @@ watch(
             :to="{ name: 'contact' }"
             class="btn fw-bold text-white rounded-3 text-black ps-lg-4 pe-lg-4 px-5"
             style="
-              background: #9C2A64;
+              background: #9c2a64;
               padding-top: 0.5rem !important;
               padding-bottom: 0.8rem !important;
             "
@@ -131,10 +140,10 @@ watch(
   transition: all 0.3s ease-in-out;
 }
 .nav a:hover {
-  color: #9C2A64 !important;
+  color: #9c2a64 !important;
 }
 .nav .router-link-exact-active {
-  color: #9C2A64 !important;
+  color: #9c2a64 !important;
 }
 .navbar-toggler {
   padding: var(--bs-navbar-toggler-padding-y) var(--bs-navbar-toggler-padding-x);

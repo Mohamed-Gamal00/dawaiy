@@ -1,4 +1,6 @@
 <script setup>
+import PageLoder from '../../components/pageloader/PageLoder.vue'
+
 import axios from 'axios'
 import ContactCom from '@/components/contact/ContactCom.vue'
 import AboutCom from '@/components/about/AboutCom.vue'
@@ -6,10 +8,15 @@ import ArticlesCom from '@/components/articles/ArticlesCom.vue'
 import ServicesCom from '@/components/services/ServicesCom.vue'
 import { ref, onMounted } from 'vue'
 const articles = ref([])
+
+const loading = ref('false')
+
 const fetchArticles = async () => {
   try {
-    const response = await axios.get('https://qrtas.almona.host/api/articles')
+    loading.value = true
+    const response = await axios.get('https://qrtas-dash.almona.host/api/articles')
     articles.value = response.data.articles
+    loading.value = false
   } catch (error) {
     console.error(error)
   }
@@ -17,7 +24,7 @@ const fetchArticles = async () => {
 
 const links = ref([])
 const fetchlinks = async () => {
-  await axios.get('https://qrtas.almona.host/api/link').then((res) => {
+  await axios.get('https://qrtas-dash.almona.host/api/link').then((res) => {
     links.value = res.data.data
   })
 }
@@ -27,6 +34,9 @@ onMounted(async () => {
 })
 </script>
 <template>
+  <div v-if="loading">
+    <PageLoder />
+  </div>
   <div class="home mt-4" style="direction: rtl" id="home">
     <!-- text and image -->
     <div class="container-fluid">
@@ -47,7 +57,7 @@ onMounted(async () => {
                 :to="{ name: 'contact' }"
                 class="btn fw-bold text-white rounded-3 text-black ps-lg-4 pe-lg-4 px-5"
                 style="
-                  background: #9C2A64;
+                  background: #9c2a64;
                   padding-top: 0.5rem !important;
                   padding-bottom: 0.8rem !important;
                 "
@@ -59,7 +69,13 @@ onMounted(async () => {
                   حمل التطبيق من جوجل بلاي أو آب ستور
                 </p>
                 <!-- Google Play button -->
-                <a v-if="links.google_play" class="market-btn google-btn" href="#" role="button">
+                <a
+                  v-if="links.google_play"
+                  class="market-btn google-btn"
+                  :href="links.google_play"
+                  target="blank"
+                  role="button"
+                >
                   <span class="market-button-subtitle">GET IT ON</span>
                   <span class="market-button-title">Google Play</span>
                 </a>
@@ -67,7 +83,8 @@ onMounted(async () => {
                 <a
                   v-if="links.app_store"
                   class="market-btn apple-btn"
-                  href="#"
+                  :href="links.app_store"
+                  target="blank"
                   role="button"
                   style="width: 160.72px"
                 >
@@ -223,7 +240,7 @@ onMounted(async () => {
                 :to="{ name: 'articles' }"
                 class="btn fw-bold text-white rounded-3 text-black ps-lg-4 pe-lg-4 px-5"
                 style="
-                  background: #9C2A64;
+                  background: #9c2a64;
                   padding-top: 0.5rem !important;
                   padding-bottom: 0.8rem !important;
                 "

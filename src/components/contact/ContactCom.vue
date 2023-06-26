@@ -154,7 +154,7 @@ export default {
       this.v$.$validate()
       if (!this.v$.$error) {
         await axios
-          .post(`https://qrtas.almona.host/api/contact`, this.contact)
+          .post(`https://qrtas-dash.almona.host/api/contact`, this.contact)
           .then(() => {
             this.$swal.fire({
               icon: 'success',
